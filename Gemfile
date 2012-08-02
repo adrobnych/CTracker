@@ -1,12 +1,14 @@
 source 'http://rubygems.org'
 
+gem 'rake', '0.8.7'
 gem 'rails', '3.0.7'
 gem 'sqlite3'
 gem 'savon'
 gem 'nokogiri', '>= 1.5.0'
-gem "system_timer"
+gem 'system_timer'
 gem 'devise'
 gem 'jquery-rails'
+
 
 group :development, :test do
 	gem 'rspec-rails'
@@ -15,6 +17,8 @@ group :development, :test do
   gem 'capybara', '>= 1.1.1'
   gem 'database_cleaner'
 	gem "webrat"
+	gem 'capybara-webkit'
+	gem 'headless'
 end
 
 group :development do
