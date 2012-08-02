@@ -1,0 +1,176 @@
+html { 
+  margin: 0px;
+  padding: 0px;
+
+  height: 100%;
+
+  background: #CCC;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCC), color-stop(0.75, white), to(white));
+  background-image: -moz-linear-gradient(top, #CCC, white 75%);
+  background-attachment: fixed;
+}
+
+body { 
+  position: relative;
+  margin: 0px auto;
+  padding: 5px 20px;
+
+  width: 800px;
+  min-height: 100%;
+
+  font-family: Helvetica Neue, Helvetica, Arial, Sans Serif;
+
+  background-color: #fff; color: #333;
+  -moz-box-shadow: 0px 0px 5px #333;
+  -webkit-box-shadow: 0px 0px 5px #333;
+}
+
+body, p, ol, ul, td {
+  font-size:   0.9em;
+  line-height: 150%;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* Tables */
+
+table {
+  margin: 0px;
+  padding: 0px;
+
+  width: 100%;
+  clear: both;
+
+  border-collapse:collapse;
+}
+
+table th {
+  text-align: left;
+  background: #333;
+  color: #FFF;
+}
+
+table th,
+table td {
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+/* Flash Notices / Errors */
+
+.notice {
+  color: #0f0;
+}
+
+.alert {
+  color: #f00;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* Header / Nav */
+body header {
+  font-size: 1.2em;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+  display: inline;
+}
+
+nav ul li {
+  display: inline;
+}
+
+body header nav {
+  position: absolute;
+  top: -1px;
+  right: 20px;
+}
+
+body header nav ul li {
+  border: 1px solid #333;
+  padding: 10px;
+  background: #333;
+}
+
+body header nav ul li:hover {
+  background: #666;
+  border: 1px solid #666;
+}
+
+body header nav ul li a:link,
+body header nav ul li a:visited {
+  color: #FFF;
+  text-decoration: none;
+}
+
+body header nav ul li a:hover,
+body header nav ul li a:active {
+  color: #FFF;
+  text-decoration: none;
+  background: none;
+}
+
+section h1 {
+  float: left;
+}
+
+/* Charts */
+#collected_currencies_chart,
+#visited_countries_chart {
+  float: right;
+}
+
+/* Footer */
+footer {
+  margin: 10px auto;
+  padding: 0;
+
+  font-size: 0.8em;
+  text-align: center;
+}

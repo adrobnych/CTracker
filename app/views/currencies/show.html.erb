@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @currency.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @currency.code %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @currency.collected?(current_user) ? 'Collected' : 'Not Collected' %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @currency.country.nil? ? 'None' : link_to(@currency.country.name, @currency.country) %>
+</p>
+
+<%= link_to 'Back', currencies_path %>

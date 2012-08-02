@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: currencies
+#
+#  name       :string(255)
+#  code       :string(255)     primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  country_id :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: NameOne
+  code: CodeOne
+  country: one
+
+two:
+  name: NameTwo
+  code: CodeTwo
+  country: two

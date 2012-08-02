@@ -1,0 +1,47 @@
+<section>
+
+  <h1>Currencies</h1>
+  <table>
+		<tr>
+			<td><div id="chart_div" style="width: 450px; height: 200px;"></div></td>
+			<td><div id="chart_div2" style="width: 300px; height: 150px;"></div></td>
+		</tr>
+	</table>	
+  <%= form_tag trips_path(:source => 'currencies'), :remote => true, :id => 'mass_form' do %>
+    <div>
+      <%= submit_tag "Mass Collection" %>
+      <%= submit_tag "Uncollection" %>
+    </div>
+    <table>
+      <tr>
+  			<th>
+          <%= check_box_tag 'master', 
+                        "master", 
+                        false, 
+                        :class => 'check', :id => "checkbox_master" %>
+        </th>
+        <th>Name
+  				<input type="text" class="filter" name="filter" id="filter" />
+  			</th>
+        <th>Code</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+
+    <% @currencies.each do |currency| %>
+      <tr class="named_row">
+  			<td>
+          <%= check_box_tag 'currency_ids[]', 
+                          currency.id, 
+                          false, 
+                          :class => 'check', :id => "checkbox_code_#{currency.id}" %>
+        </td>
+        <td class="_name"><%= currency.name %></td>
+        <td><%= currency.code %></td>
+        <td class="status"><%= @visited_countries.include?(currency.country) ? 'Collected' : 'Not Collected' %></td>
+        <td><%= link_to 'Show', currency %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
+</section>
