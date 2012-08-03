@@ -9,8 +9,8 @@
 	</table>	
   <%= form_tag trips_path(:source => 'currencies'), :remote => true, :id => 'mass_form' do %>
     <div>
-      <%= submit_tag "Mass Collection" %>
-      <%= submit_tag "Uncollection" %>
+      <%= submit_tag "Mark selected as collected" %>
+      <%= submit_tag "Mark selected as not collected" %>
     </div>
     <table>
       <tr>

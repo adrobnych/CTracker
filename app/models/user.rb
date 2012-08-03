@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :admin
 
 	has_many :trips
+	has_many :countries, :through => :trips
 
 	def visited? country
     Trip.where(:user_id => self.id, :country_id => country.code).size > 0
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
 	end
 
 	def visited_countries
-    trips.includes(:country).map { |trip| trip.country }
+    countries  
   end
 
   def not_visited_countries
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def collected_currencies
-    trips.includes(:country => :currencies).map { |trip| trip.country.currencies }.flatten
+    countries.includes(:currencies).map {|country| country.currencies}.flatten.uniq  
   end
 
   def not_collected_currencies

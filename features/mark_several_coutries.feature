@@ -1,6 +1,6 @@
 Feature: mark several countries
 
-	New story: Logged-in user can mark several countries and then process as visited
+	New story: Logged-in user can mark several countries and then process them as visited
 	
 	Scenario: check if there are checkboxes 
     Given the following countries exist and have related currencies:
@@ -21,7 +21,7 @@ Feature: mark several countries
      	|c5|
 
 	@javascript
-	Scenario: mass visit
+	Scenario: Mark selected as visited
     Given the following countries exist and have related currencies:
       |name|code|
       |CountryOne|c1|
@@ -32,12 +32,12 @@ Feature: mark several countries
     And I have logged-in as "cucumber_user@host.com" to CurrencyTracker
     When I'm opening index country page
     And I check "c1", "c2" and "c3" checkboxes
-		And I press button "Mass Visit"
+		And I press button "Mark selected as visited"
 		Then I should see contries with code "c1", "c2" and "c3" as visited 
 		
 
   @javascript
-  Scenario: mass unvisit
+  Scenario: Mark selected as not visited
     Given the following countries exist and have related currencies:
       |name|code|
       |CountryOne|c1|
@@ -49,5 +49,5 @@ Feature: mark several countries
     And I've visited those countries before
     When I'm opening index country page
     And I check "c1", "c2" and "c3" checkboxes
-    And I press button "Unvisit"
+    And I press button "Mark selected as not visited"
     Then I should see contries with code "c1", "c2" and "c3" as not visited 

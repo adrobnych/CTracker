@@ -3,7 +3,7 @@ Feature: check all
 	New story: Logged-in user can check and uncheck all checkboxes
 	
 	@javascript
-	Scenario: simultaneously checnk and unckeck all checkboxex on Countries page 
+	Scenario: simultaneously check and unckeck all check-boxes on Countries page 
     Given the following countries exist and have related currencies:
       |name|code|
       |CountryOne|c1|
@@ -32,7 +32,7 @@ Feature: check all
 
 
   @javascript
-  Scenario: simultaneously checnk and unckeck all checkboxex on Countries page 
+  Scenario: simultaneously check and unckeck all check-boxex on Countries page 
     Given the following currencies exist:
       |name|code|
       |CurrencyOne|c1|

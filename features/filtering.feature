@@ -1,6 +1,6 @@
 Feature: Filtering
 
-	New Story: Logged-in user can filter countries and currenciesby its name
+	New Story: Logged-in user can filter countries and currencies by name
 	
 	@javascript
 	Scenario: filter countries 

@@ -8,19 +8,23 @@
 
 # loading countries and currencies at first time
 
+puts "cleaning DB..."
 Currency.delete_all
 Country.delete_all
 Trip.delete_all
 User.delete_all
 
-Trip.transaction do
-DataUpdater.instance.update
+puts "loading countries and currencies..."
+ActiveRecord::Base.transaction do
+	DataUpdater.instance.update
 
-demo_user = User.create! :email => "demo@host.name", :password => "demo123", :admin => true
+	puts "creating demo user..."
+	demo_user = User.create! :email => "demo@host.name", :password => "demo123", :admin => true
 
-Country.joins(:currencies)[0..30].each do
-	|country| 
-	Trip.create 	:user => demo_user, :country => country, 
+	puts "simulating history of his visits..." 
+	Country.joins(:currencies)[0..30].each do
+		|country| 
+		Trip.create 	:user => demo_user, :country => country, 
 								:created_at => Time.now - rand(180).days
-end
+	end
 end

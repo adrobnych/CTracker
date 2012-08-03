@@ -10,8 +10,8 @@
 	</table>	
 	<%= form_tag trips_path(:source => 'countries'), :remote => true, :id => 'mass_form' do %>
 	<div>
-      <%= submit_tag "Mass Visit" %>
-      <%= submit_tag "Unvisit" %>
+      <%= submit_tag "Mark selected as visited" %>
+      <%= submit_tag "Mark selected as not visited" %>
 
   </div>
   <table>

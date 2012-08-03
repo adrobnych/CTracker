@@ -3,17 +3,17 @@ class TripsController < ApplicationController
 	def create
 		if params[:source] == "countries"
 			@countries = Country.find(params[:country_ids])
-			@new_state = params[:commit] == "Mass Visit"? "Visited" : "Not Visited"
+			@new_state = params[:commit] == "Mark selected as visited"? "Visited" : "Not Visited"
 		else
 			currencies = Currency.includes(:country).find(params[:currency_ids])
 			@countries = currencies.map{|currency| currency.country}.uniq
-			@new_state = params[:commit] == "Mass Collection"? "Collected" : "Not Collected"
+			@new_state = params[:commit] == "Mark selected as collected"? "Collected" : "Not Collected"
 		end
 
 		Trip.transaction do
 			@countries.each do
 				|country|
-				if params[:commit] == "Mass Visit" or params[:commit] == "Mass Collection"
+				if params[:commit] == "Mark selected as visited" or params[:commit] == "Mark selected as collected"
 					current_user.visit country
 				else
 					current_user.unvisit country

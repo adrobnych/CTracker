@@ -1,6 +1,6 @@
  Feature: mark several currencies
 
-	New story: Logged-in user can mark several currencies and then process as collected
+	New story: Logged-in user can mark several currencies and then process them as collected
 
 	Scenario: check if there are checkboxes 
     Given the following currencies exist:
@@ -19,7 +19,7 @@
       |c4|
 
 	@javascript
-	Scenario: mass collection
+	Scenario: Mark selected as collected
     Given the following countries and currencies exist:
       |country_name|country_code|currency_name|currency_code|
       |CountryOne|c1|Currency1|cu1|
@@ -31,13 +31,13 @@
     And I have logged-in as "cucumber_user@host.com" to CurrencyTracker
     When I'm opening index currencies page
     And I check "cu1", "cu2" and "cu3" checkboxes
-		And I press button "Mass Collection"
+		And I press button "Mark selected as collected"
 		Then I should see currencies with code "cu1", "cu11", "cu2" and "cu3" as visited 
 		
 
 
   @javascript
-  Scenario: mass uncollection
+  Scenario: Mark selected as not collected
     Given the following countries and currencies exist:
       |country_name|country_code|currency_name|currency_code|
       |CountryOne|c1|Currency1|cu1|
@@ -50,5 +50,5 @@
     And I've visited those countries before
     When I'm opening index currencies page
     And I check "cu1", "cu2" and "cu3" checkboxes
-    And I press button "Uncollect"
+    And I press button "Mark selected as not collected"
     Then I should see contries with code "cu1", "cu2" and "cu3" as not collected 
