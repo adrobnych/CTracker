@@ -1,5 +1,13 @@
-$('#mass_form').find('.check:checked').closest('tr').find('.status').text("<%= @new_state %>");
+
+<% if @source == "currencies" %>
+$("#currencies_partial").html("<%= escape_javascript(render @currencies) %>");
+<% else %>
+$("#countries_partial").html("<%= escape_javascript(render @countries) %>");
+<% end %>
+
 $(".notice").text("Important notice: Some countries have several currencies. All such currenices were marked as collected if you checked in at least one of them");
+$("#filter").val("");
 
 g_draw.line();
 g_draw.pie();
+

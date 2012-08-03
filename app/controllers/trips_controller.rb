@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 
-	def create
+	def create2
 		if params[:source] == "countries"
 			@countries = Country.find(params[:country_ids])
 			@new_state = params[:commit] == "Mark selected as visited"? "Visited" : "Not Visited"
@@ -21,6 +21,9 @@ class TripsController < ApplicationController
 			end
 		end
 
+		@currencies = Currency.includes(:country)
+		@visited_countries = Trip.includes(:country).where(:user_id => current_user.id).map{|trip| trip.country}
+
 		respond_to do |format|
       format.html do
         redirect_to :back
@@ -29,6 +32,46 @@ class TripsController < ApplicationController
     end
 
 	end
+
+	def create
+		if params[:source] == "countries"
+			countries = params[:country_ids].nil? ? [] :Country.find(params[:country_ids])
+		else
+			currencies = params[:currency_ids].nil? ? [] : Currency.includes(:country).find(params[:currency_ids])
+			countries = currencies.map{|currency| currency.country}.uniq
+		end
+
+	  Trip.transaction do
+			#uncheck
+			current_user.countries.each do
+				|visited_country|
+				if !countries.include?(visited_country) 
+					current_user.unvisit visited_country
+				end	
+			end
+		
+			#check
+			countries.each do
+				|country|
+				trip = Trip.find_or_create_by_country_id(country.id, :user => current_user)	
+			end		
+
+			@source = params[:source]
+			@currencies = Currency.includes(:country)
+			@countries = Country.joins(:currencies)
+
+			@visited_countries = Trip.includes(:country).where(:user_id => current_user.id).map{|trip| trip.country} 
+		end
+
+		respond_to do |format|
+      format.html do
+        redirect_to :back
+      end
+      format.js
+    end
+
+	end
+
 
 	def chart_data
 

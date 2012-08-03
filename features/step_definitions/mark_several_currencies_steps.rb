@@ -30,11 +30,18 @@ Then /^I should see currencies with code "(.*?)", "(.*?)", "(.*?)" and "(.*?)" a
 	end
 end
 
-Then /^I should see contries with code "(.*?)", "(.*?)" and "(.*?)" as not collected$/ do |arg1, arg2, arg3|
-  [arg1, arg2, arg3].each do
+Then /^I should see currencies with code "(.*?)" and "(.*?)" as not collected$/ do |arg1, arg2|
+  [arg1, arg2].each do
     |code|
     @currency = Currency.find(code)
     visit currency_path(@currency)
     page.should have_content "Status: Not Collected"
+  end
+end
+
+When /^I uncheck "(.*?)", "(.*?)" and "(.*?)" checkboxes$/ do |arg1, arg2, arg3|
+  [arg1, arg2, arg3].each do
+    |code|
+    uncheck("checkbox_code_#{code}")
   end
 end

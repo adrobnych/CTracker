@@ -3,7 +3,7 @@ class CurrenciesController < ApplicationController
   # GET /currencies.xml
   def index
     @currencies = Currency.includes(:country)
-    @visited_countries = Trip.includes(:country).where(:user_id => current_user.id).map{|trip| trip.country}
+    @visited_countries = current_user.countries   #Trip.includes(:country).where(:user_id => current_user.id).map{|trip| trip.country}
 
 
     respond_to do |format|

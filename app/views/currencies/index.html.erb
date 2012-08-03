@@ -9,8 +9,7 @@
 	</table>	
   <%= form_tag trips_path(:source => 'currencies'), :remote => true, :id => 'mass_form' do %>
     <div>
-      <%= submit_tag "Mark selected as collected" %>
-      <%= submit_tag "Mark selected as not collected" %>
+      <%= submit_tag "Save" %>
     </div>
     <table>
       <tr>
@@ -28,20 +27,8 @@
         <th></th>
       </tr>
 
-    <% @currencies.each do |currency| %>
-      <tr class="named_row">
-  			<td>
-          <%= check_box_tag 'currency_ids[]', 
-                          currency.id, 
-                          false, 
-                          :class => 'check', :id => "checkbox_code_#{currency.id}" %>
-        </td>
-        <td class="_name"><%= currency.name %></td>
-        <td><%= currency.code %></td>
-        <td class="status"><%= @visited_countries.include?(currency.country) ? 'Collected' : 'Not Collected' %></td>
-        <td><%= link_to 'Show', currency %></td>
-      </tr>
-    <% end %>
+      <tbody id="currencies_partial"><%= render @currencies %></tbody>
+
     </table>
   <% end %>
 </section>

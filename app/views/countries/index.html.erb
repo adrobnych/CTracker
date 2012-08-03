@@ -10,9 +10,7 @@
 	</table>	
 	<%= form_tag trips_path(:source => 'countries'), :remote => true, :id => 'mass_form' do %>
 	<div>
-      <%= submit_tag "Mark selected as visited" %>
-      <%= submit_tag "Mark selected as not visited" %>
-
+      <%= submit_tag "Save" %>
   </div>
   <table>
     <tr>
@@ -31,19 +29,8 @@
       <th></th>
     </tr>
 
-  <% @countries.each do |country| %>
-    <tr class="named_row" >
-			<td><%= check_box_tag 'country_ids[]', 
-												country.id, 
-												false, 
-												:class => 'check', :id => "checkbox_code_#{country.id}" %></td>
-      <td class="_name"><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td class="status"><%= @visited_countries.include?(country) ? 'Visited' : 'Not Visited' %></td>
-      <td><%= link_to 'Show', country %></td>
-      <td><%= link_to 'Edit', edit_country_path(country) %></td>
-    </tr>
-  <% end %>
+    <tbody id="countries_partial"><%= render @countries %></tbody>
+
   </table>
 	<% end %>
 </section>

@@ -1,0 +1,13 @@
+
+      <tr class="named_row">
+  			<td>
+          <%= check_box_tag 'currency_ids[]', 
+                          currency.id, 
+                          currency.collected?(current_user), 
+                          :class => 'check', :id => "checkbox_code_#{currency.id}" %>
+        </td>
+        <td class="_name"><%= currency.name %></td>
+        <td><%= currency.code %></td>
+        <td class="status"><%= @visited_countries.include?(currency.country) ? 'Collected' : 'Not Collected' %></td>
+        <td><%= link_to 'Show', currency %></td>
+      </tr>

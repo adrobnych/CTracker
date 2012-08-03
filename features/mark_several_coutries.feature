@@ -32,7 +32,7 @@ Feature: mark several countries
     And I have logged-in as "cucumber_user@host.com" to CurrencyTracker
     When I'm opening index country page
     And I check "c1", "c2" and "c3" checkboxes
-		And I press button "Mark selected as visited"
+		And I press button "Save"
 		Then I should see contries with code "c1", "c2" and "c3" as visited 
 		
 
@@ -48,6 +48,6 @@ Feature: mark several countries
     And I have logged-in as "cucumber_user@host.com" to CurrencyTracker
     And I've visited those countries before
     When I'm opening index country page
-    And I check "c1", "c2" and "c3" checkboxes
-    And I press button "Mark selected as not visited"
+    And I uncheck "c1", "c2" and "c3" checkboxes
+    And I press button "Save"
     Then I should see contries with code "c1", "c2" and "c3" as not visited 

@@ -31,7 +31,7 @@
     And I have logged-in as "cucumber_user@host.com" to CurrencyTracker
     When I'm opening index currencies page
     And I check "cu1", "cu2" and "cu3" checkboxes
-		And I press button "Mark selected as collected"
+		And I press button "Save"
 		Then I should see currencies with code "cu1", "cu11", "cu2" and "cu3" as visited 
 		
 
@@ -49,6 +49,6 @@
     And I have logged-in as "cucumber_user@host.com" to CurrencyTracker
     And I've visited those countries before
     When I'm opening index currencies page
-    And I check "cu1", "cu2" and "cu3" checkboxes
-    And I press button "Mark selected as not collected"
-    Then I should see contries with code "cu1", "cu2" and "cu3" as not collected 
+    And I uncheck "cu1", "cu2" and "cu3" checkboxes
+    And I press button "Save"
+    Then I should see currencies with code "cu2" and "cu3" as not collected 
